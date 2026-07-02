@@ -7,7 +7,11 @@ import com.db.DBConnection;
 
 @RestController
 @RequestMapping("/api")
-@CrossOrigin(origins = "http://localhost:3000")
+// @CrossOrigin(origins = "http://localhost:3000")
+
+// ✅ Update CORS origin to your live frontend
+@CrossOrigin(origins = "https://codingquiz-frontend.onrender.com")
+
 public class QuizController {
 
     // ================= GET ALL QUIZZES =================
