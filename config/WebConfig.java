@@ -1,4 +1,4 @@
-package com.yourpackage.config;  // apna package name use karo
+package com.quizapp.config;  // apna actual base package name use karo
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
