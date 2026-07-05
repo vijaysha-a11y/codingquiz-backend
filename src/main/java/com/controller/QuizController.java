@@ -10,7 +10,11 @@ import com.db.DBConnection;
 // @CrossOrigin(origins = "http://localhost:3000")
 
 // ✅ Update CORS origin to your live frontend
+<<<<<<< HEAD
 @CrossOrigin(origins = "https://codingquiz-frontend.onrender.com")
+=======
+// @CrossOrigin(origins = "https://codingquiz-frontend.onrender.com")
+>>>>>>> 3e55ba82dcadcaf7bd728494d80568cac9a2fc6d
 
 public class QuizController {
 

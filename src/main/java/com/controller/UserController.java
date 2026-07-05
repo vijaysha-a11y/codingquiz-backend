@@ -8,7 +8,11 @@ import com.db.DBConnection;
 @RestController
 @RequestMapping("/api")
 // @CrossOrigin(origins = "http://localhost:3000")
+<<<<<<< HEAD
 @CrossOrigin(origins = "https://codingquiz-frontend.onrender.com")
+=======
+// @CrossOrigin(origins = "https://codingquiz-frontend.onrender.com")
+>>>>>>> 3e55ba82dcadcaf7bd728494d80568cac9a2fc6d
 public class UserController {
 
     @GetMapping("/user-stats")
