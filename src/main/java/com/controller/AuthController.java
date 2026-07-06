@@ -6,12 +6,7 @@ import java.util.*;
 
 @RestController
 @RequestMapping("/api")
-// @CrossOrigin(origins = "http://localhost:3000")
-<<<<<<< HEAD
 @CrossOrigin(origins = "https://codingquiz-frontend.onrender.com")
-=======
-// @CrossOrigin(origins = "https://codingquiz-frontend.onrender.com")
->>>>>>> 3e55ba82dcadcaf7bd728494d80568cac9a2fc6d
 public class AuthController {
 
     @PostMapping("/register")
@@ -57,13 +52,12 @@ public class AuthController {
                 return response;
             }
 
-            // ✅ role return hogi — null matlab login fail
             String role = User.loginUser(request.getUsername(), request.getPassword());
 
             if (role != null) {
                 response.put("success", true);
                 response.put("username", request.getUsername());
-                response.put("role", role); // ✅ ADMIN ya USER
+                response.put("role", role);
                 response.put("message", "Login successful");
             } else {
                 response.put("success", false);

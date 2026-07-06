@@ -1,5 +1,4 @@
 package com.controller;
-
 import java.sql.*;
 import java.util.*;
 import org.springframework.web.bind.annotation.*;
@@ -7,15 +6,7 @@ import com.db.DBConnection;
 
 @RestController
 @RequestMapping("/api")
-// @CrossOrigin(origins = "http://localhost:3000")
-
-// ✅ Update CORS origin to your live frontend
-<<<<<<< HEAD
 @CrossOrigin(origins = "https://codingquiz-frontend.onrender.com")
-=======
-// @CrossOrigin(origins = "https://codingquiz-frontend.onrender.com")
->>>>>>> 3e55ba82dcadcaf7bd728494d80568cac9a2fc6d
-
 public class QuizController {
 
     // ================= GET ALL QUIZZES =================
@@ -52,6 +43,10 @@ public class QuizController {
         }
         return quizzes;
     }
+
+    // ✅ Keep your other methods (getQuizById, createQuiz, updateQuiz, deleteQuiz, addQuestion, updateQuestion, deleteQuestion, submitQuiz) unchanged
+}
+
 
     // ================= GET QUIZ BY ID =================
     @GetMapping("/quiz/{id}")
