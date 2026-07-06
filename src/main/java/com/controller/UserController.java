@@ -7,12 +7,7 @@ import com.db.DBConnection;
 
 @RestController
 @RequestMapping("/api")
-// @CrossOrigin(origins = "http://localhost:3000")
-<<<<<<< HEAD
 @CrossOrigin(origins = "https://codingquiz-frontend.onrender.com")
-=======
-// @CrossOrigin(origins = "https://codingquiz-frontend.onrender.com")
->>>>>>> 3e55ba82dcadcaf7bd728494d80568cac9a2fc6d
 public class UserController {
 
     @GetMapping("/user-stats")
@@ -25,8 +20,6 @@ public class UserController {
         stats.put("rank", 0);
 
         try (Connection conn = DBConnection.getConnection()) {
-            // Basic stats - averageScore ab percentage ke hisaab se calculate hota hai
-            // (score / us quiz ke total questions) * 100, fir un percentages ka average
             PreparedStatement stmt = conn.prepareStatement(
                 "SELECT COUNT(*) as attemptCount, " +
                 "AVG(r.score * 100.0 / qc.questionTotal) as avgPercentage, " +
@@ -39,19 +32,11 @@ public class UserController {
             ResultSet rs = stmt.executeQuery();
 
             if (rs.next()) {
-                int attemptCount = rs.getInt("attemptCount");
-                double avgPercentage = rs.getDouble("avgPercentage");
-                int bestRawScore = rs.getInt("bestRawScore");
-
-                System.out.println("DEBUG /user-stats -> attemptCount=" + attemptCount
-                        + " avgPercentage=" + avgPercentage + " bestRawScore=" + bestRawScore);
-
-                stats.put("totalQuizzesTaken", attemptCount);
-                stats.put("averageScore", avgPercentage);
-                stats.put("bestScore", bestRawScore);
+                stats.put("totalQuizzesTaken", rs.getInt("attemptCount"));
+                stats.put("averageScore", rs.getDouble("avgPercentage"));
+                stats.put("bestScore", rs.getInt("bestRawScore"));
             }
 
-            // Rank calculation - bhi ab percentage-based average use karta hai
             PreparedStatement rankStmt = conn.prepareStatement(
                 "SELECT COUNT(*) as user_rank FROM (" +
                 "  SELECT r.username, AVG(r.score * 100.0 / qc.total) as avg " +
@@ -84,7 +69,6 @@ public class UserController {
         List<Map<String, Object>> quizzes = new ArrayList<>();
 
         try (Connection conn = DBConnection.getConnection()) {
-            // totalQuestions ab actual questions table se aata hai, hardcoded 10 nahi
             PreparedStatement stmt = conn.prepareStatement(
                 "SELECT r.quiz_id, q.title, r.score, r.attempted_at, qc.total as totalQuestions " +
                 "FROM results r " +
@@ -134,7 +118,6 @@ public class UserController {
                 profile.put("bestScore", rs.getInt("bestRawScore"));
             }
 
-            // Placeholder values — replace with actual user profile table if needed
             profile.put("email", "user@example.com");
             profile.put("fullName", username);
             profile.put("bio", "");
